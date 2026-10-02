@@ -1,0 +1,48 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: PlanB manual Amplify hosting and private deployment artifacts.
+Resources:
+  Artifacts:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault: { SSEAlgorithm: AES256 }
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        IgnorePublicAcls: true
+        BlockPublicPolicy: true
+        RestrictPublicBuckets: true
+  App:
+    Type: AWS::Amplify::App
+    Properties:
+      Name: planb-live
+      Platform: WEB
+      CustomRules:
+        - Source: '</^[^.]+$|\\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|woff2|ttf|map|json|drawio)$)([^.]+$)/>'
+          Target: /index.html
+          Status: '200'
+      CustomHeaders: |
+        customHeaders:
+          - pattern: '**/*'
+            headers:
+              - key: X-Content-Type-Options
+                value: nosniff
+              - key: X-Frame-Options
+                value: DENY
+              - key: Referrer-Policy
+                value: no-referrer
+              - key: Permissions-Policy
+                value: camera=(), microphone=(), geolocation=()
+  Main:
+    Type: AWS::Amplify::Branch
+    Properties:
+      AppId: !GetAtt App.AppId
+      BranchName: main
+      Stage: PRODUCTION
+      EnableAutoBuild: false
+Outputs:
+  AppId: { Value: !GetAtt App.AppId }
+  Origin: { Value: !Sub 'https://main.${App.DefaultDomain}' }
+  ArtifactsBucket: { Value: !Ref Artifacts }

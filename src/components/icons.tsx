@@ -1,0 +1,11 @@
+import type { SVGProps } from "react";
+const base = { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 2.2, strokeLinecap: "round", strokeLinejoin: "round", "aria-hidden": true } as const;
+export const Check = (p: SVGProps<SVGSVGElement>) => <svg {...base} {...p}><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>;
+export const Cross = (p: SVGProps<SVGSVGElement>) => <svg {...base} {...p}><path d="M6 6l12 12M18 6L6 18" /></svg>;
+export const Alert = (p: SVGProps<SVGSVGElement>) => <svg {...base} {...p}><path d="M12 4l9 16H3z" /><path d="M12 10v4M12 17.5v.01" /></svg>;
+export const Arrow = (p: SVGProps<SVGSVGElement>) => <svg {...base} {...p}><path d="M5 12h14M13 6l6 6-6 6" /></svg>;
+export const Clock = (p: SVGProps<SVGSVGElement>) => <svg {...base} {...p}><circle cx="12" cy="12" r="8.5" /><path d="M12 7.5V12l3 2" /></svg>;
+export const Lock = (p: SVGProps<SVGSVGElement>) => <svg {...base} {...p}><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V8a4 4 0 018 0v3" /></svg>;
+export const Download = (p: SVGProps<SVGSVGElement>) => <svg {...base} {...p}><path d="M12 4v11M7 11l5 5 5-5M5 20h14" /></svg>;
+export const Copy = (p: SVGProps<SVGSVGElement>) => <svg {...base} {...p}><rect x="9" y="9" width="11" height="11" rx="2" /><path d="M5 15V6a2 2 0 012-2h9" /></svg>;
+export const Spinner = (p: SVGProps<SVGSVGElement>) => <svg {...base} {...p} className="spin"><path d="M12 3a9 9 0 109 9" /></svg>;

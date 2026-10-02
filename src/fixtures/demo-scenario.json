@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "fictional": true,
+  "id": "demo-workshop",
+  "title": "Fictional Community Workshop Day",
+  "localDate": "2026-10-03",
+  "timezone": "Asia/Kolkata",
+  "startSlots": [
+    600,
+    630,
+    660
+  ],
+  "endMinute": 690,
+  "rooms": [
+    {
+      "id": "A",
+      "name": "Main Hall",
+      "capacity": 80,
+      "equipment": [
+        "projector"
+      ],
+      "accessible": true
+    },
+    {
+      "id": "B",
+      "name": "Computer Lab",
+      "capacity": 30,
+      "equipment": [
+        "computers"
+      ],
+      "accessible": true
+    },
+    {
+      "id": "C",
+      "name": "Studio",
+      "capacity": 50,
+      "equipment": [
+        "projector"
+      ],
+      "accessible": false
+    }
+  ],
+  "sessions": [
+    {
+      "id": "ai-demo",
+      "title": "AI demo",
+      "speakerId": "speaker-ai-demo",
+      "attendance": 60,
+      "equipment": [
+        "projector"
+      ],
+      "requiresAccessible": true,
+      "durationMinutes": 30,
+      "originalStartMinute": 600,
+      "originalRoomId": "A",
+      "earliestStartMinute": 600,
+      "latestStartMinute": 660
+    },
+    {
+      "id": "cloud",
+      "title": "Cloud workshop",
+      "speakerId": "speaker-cloud",
+      "attendance": 50,
+      "equipment": [
+        "projector"
+      ],
+      "requiresAccessible": true,
+      "durationMinutes": 30,
+      "originalStartMinute": 630,
+      "originalRoomId": "A",
+      "earliestStartMinute": 630,
+      "latestStartMinute": 660
+    },
+    {
+      "id": "careers",
+      "title": "Careers panel",
+      "speakerId": "speaker-careers",
+      "attendance": 40,
+      "equipment": [
+        "projector"
+      ],
+      "requiresAccessible": false,
+      "durationMinutes": 30,
+      "originalStartMinute": 660,
+      "originalRoomId": "A",
+      "earliestStartMinute": 660,
+      "latestStartMinute": 660
+    },
+    {
+      "id": "python",
+      "title": "Python lab",
+      "speakerId": "speaker-python",
+      "attendance": 25,
+      "equipment": [
+        "computers"
+      ],
+      "requiresAccessible": true,
+      "durationMinutes": 30,
+      "originalStartMinute": 600,
+      "originalRoomId": "B",
+      "earliestStartMinute": 600,
+      "latestStartMinute": 660
+    },
+    {
+      "id": "git",
+      "title": "Git lab",
+      "speakerId": "speaker-git",
+      "attendance": 25,
+      "equipment": [
+        "computers"
+      ],
+      "requiresAccessible": true,
+      "durationMinutes": 30,
+      "originalStartMinute": 630,
+      "originalRoomId": "B",
+      "earliestStartMinute": 630,
+      "latestStartMinute": 660
+    },
+    {
+      "id": "design",
+      "title": "Design clinic",
+      "speakerId": "speaker-design",
+      "attendance": 40,
+      "equipment": [
+        "projector"
+      ],
+      "requiresAccessible": false,
+      "durationMinutes": 30,
+      "originalStartMinute": 630,
+      "originalRoomId": "C",
+      "earliestStartMinute": 630,
+      "latestStartMinute": 660
+    }
+  ],
+  "outages": [
+    {
+      "roomId": "A",
+      "startMinute": 600,
+      "endMinute": 630
+    }
+  ],
+  "speakerUnavailability": [],
+  "selectedSessionId": "ai-demo",
+  "expected": {
+    "toyModelFeasibleAssignments": 8,
+    "fewestChanges": {
+      "changedSessions": 2,
+      "totalDelayMinutes": 60,
+      "changes": [
+        {
+          "sessionId": "ai-demo",
+          "roomId": "A",
+          "startMinute": 660
+        },
+        {
+          "sessionId": "careers",
+          "roomId": "C",
+          "startMinute": 660
+        }
+      ]
+    },
+    "earliestSelectedSession": {
+      "changedSessions": 3,
+      "totalDelayMinutes": 60,
+      "changes": [
+        {
+          "sessionId": "ai-demo",
+          "roomId": "A",
+          "startMinute": 630
+        },
+        {
+          "sessionId": "cloud",
+          "roomId": "A",
+          "startMinute": 660
+        },
+        {
+          "sessionId": "careers",
+          "roomId": "C",
+          "startMinute": 660
+        }
+      ]
+    }
+  }
+}
